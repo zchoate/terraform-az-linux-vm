@@ -6,6 +6,11 @@ resource "random_string" "rand" {
     special = false
 }
 
+resource "random_pet" "main" {
+    length      = "2"
+    separator   = ""
+}
+
 locals {
     resource_prefix_partial = "${var.location_short}-${var.project_short}-${var.environment}-${random_string.rand.result}"
     resource_prefix = lower(local.resource_prefix_partial)
