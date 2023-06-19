@@ -14,6 +14,7 @@ env:
   ARM_CLIENT_ID: "${{ secrets.AZURE_CLIENT_ID }}"
   ARM_SUBSCRIPTION_ID: "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
   ARM_TENANT_ID: "${{ secrets.AZURE_TENANT_ID }}"
+  TF_VAR_allowed_address_ssh: "${{ secrets.TF_VAR_ALLOWED_ADDRESS_SSH }}"
 
 jobs:
   terraform-plan:
@@ -36,7 +37,11 @@ jobs:
     
     - name: Terraform Init
       id: init
-      run: terraform init
+      run: |
+        terraform init \
+          -backend-config="resource_group_name=${{ secrets.TFSTATE_RG }}" \
+          -backend-config="storage_account_name=${{ secrets.TFSTATE_SA }}" \
+          -backend-config="container_name=${{ secrets.TFSTATE_CONTAINER }}"
     
     - name: Terraform Validate
       id: validate
