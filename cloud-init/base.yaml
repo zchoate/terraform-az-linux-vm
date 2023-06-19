@@ -5,3 +5,5 @@ package_upgrade: true
 packages:
 - git
 - curl
+- docker.io
+- docker-compose
