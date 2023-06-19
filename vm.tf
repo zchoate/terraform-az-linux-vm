@@ -80,5 +80,5 @@ resource "azurerm_virtual_machine_extension" "ssh_login" {
     publisher             = "Microsoft.Azure.ActiveDirectory"
     type                  = "AADSSHLoginForLinux"
     type_handler_version  = "1.0"
-    automatic_upgrade_enabled = true
+    auto_upgrade_minor_version = true
 }
