@@ -75,9 +75,10 @@ resource "azurerm_linux_virtual_machine" "vm" {
 }
 
 resource "azurerm_virtual_machine_extension" "ssh_login" {
-    name                = "AADSSHLoginForLinux"
-    virtual_machine_id  = azurerm_linux_virtual_machine.vm.id
-    publisher           = "Microsoft.Azure.ActiveDirectory"
-    type                = "AADSSHLoginForLinux"
+    name                  = "AADSSHLoginForLinux"
+    virtual_machine_id    = azurerm_linux_virtual_machine.vm.id
+    publisher             = "Microsoft.Azure.ActiveDirectory"
+    type                  = "AADSSHLoginForLinux"
+    type_handler_version  = "1.0"
     automatic_upgrade_enabled = true
 }
