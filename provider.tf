@@ -6,7 +6,7 @@ terraform {
     }
   }
 
-  // update the values here
+  // update the values here if not already configured elsewhere
   backend "azurerm" {
     # resource_group_name     = 
     # storage_account_name    = 
