@@ -13,6 +13,7 @@ variable "sn01_address_space" {
 variable "allowed_address_ssh" {
   description = "Address prefix for inbound SSH"
   type        = string
+  sensitive   = true
 }
 
 variable "vm" {
